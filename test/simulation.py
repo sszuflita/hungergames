@@ -14,31 +14,30 @@ def import_path(fullpath):
     return module
 
 slackerFile = import_path("../strategies/Slacker.py")
+hunterFile = import_path("../strategies/Hunter.py")
+randomFile = import_path("../strategies/RandomPlayer.py")
 
 class PlayerEnvironment:
-    def __init__(self, aPlayer, aFood, aPastMoves):
+    def __init__(self, aPlayer, aFood):
         self.thePlayer = aPlayer
         self.theFood = aFood
-        self.thePastMoves = aPastMoves
+        self.timesHunted = 0
+        self.timesSlacked = 0
 
     def reputation(self):
-        if len(self.thePastMoves) == 0:
+        if self.timesHunted == 0 and self.timesSlacked == 0:
             return 0
-        h = 0
-        s = 0
-        for c in self.thePastMoves:
-            if c == 'h':
-                h += 1
-            if c == 's':
-                s += 1
-        return 1. * h / (h + s)
+        else:
+            return float(self.timesHunted) / (self.timesHunted + self.timesSlacked)
 
 class PlayerGenerator:
     def __init__(self):
         pass
 
     def generatePlayer(self):
-        return slackerFile.Slacker()
+        #return slackerFile.Slacker()
+        #return hunterFile.Hunter()
+        return randomFile.RandomPlayer()
 
 
 class Simulation:
@@ -48,7 +47,7 @@ class Simulation:
         for i in range(aNumPlayers):
             myPlayer = aPlayerGenerator.generatePlayer()
             amtFood = 300 * (aNumPlayers - 1)
-            myEnvironment = PlayerEnvironment(myPlayer, amtFood, "")
+            myEnvironment = PlayerEnvironment(myPlayer, amtFood)
             self.thePlayerEnvironments.append(myEnvironment)
 
     def simulateRound(self):
@@ -69,6 +68,50 @@ class Simulation:
             huntDecisions = otherHuntDecisions[:i] + ["X"] + otherHuntDecisions[i:]
             allDecisions.append(huntDecisions)
         print allDecisions
+        foodEarnings = [0 for x in range(p)]
+        for i in range(p):
+            for j in range(i,p):
+                (outcome1, outcome2) = self.huntOutcome(allDecisions[i][j],allDecisions[j][i])
+                foodEarnings[i] += outcome1
+                foodEarnings[j] += outcome2
+        for i in range(p):
+            playerEnvironment = self.thePlayerEnvironments[i]
+            playerEnvironment.thePlayer.hunt_outcomes(foodEarnings[i])
+            playerEnvironment.theFood += foodEarnings[i]
+        print foodEarnings
+        count = 0
+        for i in range(p):
+            playerEnvironment = self.thePlayerEnvironments[i]
+            for j in range(p):
+                if allDecisions[i][j] == 'h':
+                    playerEnvironment.timesHunted += 1
+                    count += 1
+                elif allDecisions[i][j] == 's':
+                    playerEnvironment.timesSlacked += 1
+                    
+        if count >= m:
+            award = 2*(p-1)
+        else:
+            award = 0
+        for i in range(p):
+            playerEnvironment = self.thePlayerEnvironments[i]
+            playerEnvironment.thePlayer.round_end(award, m, p)
+            playerEnvironment.theFood += award
+            print playerEnvironment.theFood
+            print playerEnvironment.reputation()
+        print award
+
+                
+    def huntOutcome(self, decision1, decision2):
+        if (decision1, decision2) == ('h', 'h'):
+            return (0,0)
+        if (decision1, decision2) == ('h', 's'):
+            return (-3,1)
+        if (decision1, decision2) == ('s', 'h'):
+            return (1,-3)
+        if (decision1, decision2) == ('s', 's'):
+            return (-2,-2)
+        return (0,0)
 
 if __name__ == "__main__":
     pg = PlayerGenerator()

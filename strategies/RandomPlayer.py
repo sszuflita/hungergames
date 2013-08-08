@@ -22,8 +22,9 @@ class RandomPlayer:
     # state 'h' or 's'
     def hunt_choices(self, round_number, current_food, current_reputation, m,
             player_reputations):
+        hunt_decisions = []
         for x in player_reputations:
-            if random.randint(0,1) = 0:
+            if random.randint(0,1) == 0:
                 hunt_decisions.append('h')
             else:
                 hunt_decisions.append('s')
