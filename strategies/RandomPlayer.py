@@ -2,7 +2,7 @@ import random
 
 # Optional format of the constructor for the OOP approach
 class RandomPlayer:
-    def __init__(self):
+    def __init__(self, aProbability):
         """
         Optional __init__ method is run once when your Player object is created before the
         game starts
@@ -15,6 +15,7 @@ class RandomPlayer:
         """
         self.food = 0
         self.reputation = 0
+        self.probability = aProbability
 
     # All the other functions are the same as with the non object oriented setting (but they
     # should be instance methods so don't forget to add 'self' as an extra first argument).
@@ -24,7 +25,7 @@ class RandomPlayer:
             player_reputations):
         hunt_decisions = []
         for x in player_reputations:
-            if random.randint(0,1) == 0:
+            if random.random() < self.probability:
                 hunt_decisions.append('h')
             else:
                 hunt_decisions.append('s')
