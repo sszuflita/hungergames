@@ -67,7 +67,6 @@ class Simulation:
                 myReputations[:i] + myReputations[i+1:])
             huntDecisions = otherHuntDecisions[:i] + ["X"] + otherHuntDecisions[i:]
             allDecisions.append(huntDecisions)
-        print allDecisions
         foodEarnings = [0 for x in range(p)]
         for i in range(p):
             for j in range(i,p):
@@ -78,7 +77,6 @@ class Simulation:
             playerEnvironment = self.thePlayerEnvironments[i]
             playerEnvironment.thePlayer.hunt_outcomes(foodEarnings[i])
             playerEnvironment.theFood += foodEarnings[i]
-        print foodEarnings
         count = 0
         for i in range(p):
             playerEnvironment = self.thePlayerEnvironments[i]
@@ -97,10 +95,20 @@ class Simulation:
             playerEnvironment = self.thePlayerEnvironments[i]
             playerEnvironment.thePlayer.round_end(award, m, p)
             playerEnvironment.theFood += award
-            print playerEnvironment.theFood
-            print playerEnvironment.reputation()
-        print award
 
+    def gameIsOver(self):
+        if len(self.thePlayerEnvironments) == 1:
+            return True
+        return self.theRoundNumber > 10 and rand.randint(0,100) > 90
+
+    def cleanUpAfterRound(self):
+        i = 0
+        while(i < len(self.thePlayerEnvironments)):
+            myPlayerEnvironment = self.thePlayerEnvironments[i]
+            if (myPlayerEnvironment.theFood <= 0):
+                del self.thePlayerEnvironments[i]
+            else:
+                i += 1
                 
     def huntOutcome(self, decision1, decision2):
         if (decision1, decision2) == ('h', 'h'):
@@ -113,10 +121,19 @@ class Simulation:
             return (-2,-2)
         return (0,0)
 
+    def printPlayers(self):
+        for playerEnvironment in self.thePlayerEnvironments:
+            print playerEnvironment.theFood
+
 if __name__ == "__main__":
     pg = PlayerGenerator()
     sim = Simulation(10, pg)
-    sim.simulateRound()
 
+    while(len(sim.thePlayerEnvironments) == 10):
+        sim.simulateRound()
+        sim.cleanUpAfterRound()
+        print "Round " + str(sim.theRoundNumber)
+        sim.printPlayers()
+    sim.printPlayers()
 
 
