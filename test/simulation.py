@@ -37,7 +37,7 @@ class PlayerGenerator:
     def generatePlayer(self):
         #return slackerFile.Slacker()
         #return hunterFile.Hunter()
-        return randomFile.RandomPlayer()
+        return randomFile.RandomPlayer(random.random())
 
 
 class Simulation:
@@ -99,7 +99,7 @@ class Simulation:
     def gameIsOver(self):
         if len(self.thePlayerEnvironments) == 1:
             return True
-        return self.theRoundNumber > 10 and rand.randint(0,100) > 90
+        return self.theRoundNumber > 10000 and random.randint(0,100) > 90
 
     def cleanUpAfterRound(self):
         i = 0
@@ -129,7 +129,7 @@ if __name__ == "__main__":
     pg = PlayerGenerator()
     sim = Simulation(10, pg)
 
-    while(len(sim.thePlayerEnvironments) == 10):
+    while not sim.gameIsOver():
         sim.simulateRound()
         sim.cleanUpAfterRound()
         print "Round " + str(sim.theRoundNumber)
