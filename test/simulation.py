@@ -16,6 +16,8 @@ def import_path(fullpath):
 slackerFile = import_path("../strategies/Slacker.py")
 hunterFile = import_path("../strategies/Hunter.py")
 randomFile = import_path("../strategies/RandomPlayer.py")
+thresholdFile = import_path("../strategies/ThresholdPlayer.py")
+strategyFile = import_path("../strategies/Strategy.py")
 
 class PlayerEnvironment:
     def __init__(self, aPlayer, aFood):
@@ -34,19 +36,28 @@ class PlayerGenerator:
     def __init__(self):
         pass
 
-    def generatePlayer(self):
-        #return slackerFile.Slacker()
-        #return hunterFile.Hunter()
-        return randomFile.RandomPlayer(random.random())
+    def generatePlayer(self, id):
+        if id == 0:
+            return strategyFile.Strategy()
+        else:
+            #return slackerFile.Slacker()
+            #return hunterFile.Hunter()
+            return randomFile.RandomPlayer(random.random())
+            #return thresholdFile.ThresholdPlayer(random.random())
 
 
 class Simulation:
     def __init__(self, aNumPlayers, aPlayerGenerator):
+        self.playerDied = False
         self.theRoundNumber = 0
         self.thePlayerEnvironments = []
-        for i in range(aNumPlayers):
-            myPlayer = aPlayerGenerator.generatePlayer()
-            amtFood = 300 * (aNumPlayers - 1)
+        amtFood = 300 * (aNumPlayers - 1)
+        # always initialize user player to be index 0
+        myPlayer = aPlayerGenerator.generatePlayer(0)
+        myEnvironment = PlayerEnvironment(myPlayer, amtFood)
+        self.thePlayerEnvironments.append(myEnvironment)
+        for i in range(1,aNumPlayers):
+            myPlayer = aPlayerGenerator.generatePlayer(1)
             myEnvironment = PlayerEnvironment(myPlayer, amtFood)
             self.thePlayerEnvironments.append(myEnvironment)
 
@@ -96,16 +107,37 @@ class Simulation:
             playerEnvironment.thePlayer.round_end(award, m, p)
             playerEnvironment.theFood += award
 
-    def gameIsOver(self):
-        if len(self.thePlayerEnvironments) == 1:
+    def isGameOver(self):
+        if self.playerDied:
+            print "Game is over: User Player died :("
             return True
-        return self.theRoundNumber > 10000 and random.randint(0,100) > 90
+        if len(self.thePlayerEnvironments) == 1:
+            print "Game is over: User Player won!!!! :)"
+            return True
+        if self.theRoundNumber > 10000 and random.randint(0,100) > 90:
+            print "Game is over: Large of number of rounds reached"
+            max = self.thePlayerEnvironments[0].theFood
+            maxIdx = 0
+            for i in range(1,len(self.thePlayerEnvironments)):
+                if self.thePlayerEnvironments[i].theFood > max:
+                    max = self.thePlayerEnvironments[i].theFood
+                    maxIdx = i
+            if maxIdx == 0:
+                print "User Player won still!"
+            else:
+                print "User Player lost :(. Player ", maxIdx, " won instead."
+            return True
+        return False
 
     def cleanUpAfterRound(self):
         i = 0
         while(i < len(self.thePlayerEnvironments)):
             myPlayerEnvironment = self.thePlayerEnvironments[i]
             if (myPlayerEnvironment.theFood <= 0):
+                self.playerDied = (i == 0)
+                # the first time this happens means that our played died
+                if i == 0:
+                    self.playerDied = True
                 del self.thePlayerEnvironments[i]
             else:
                 i += 1
@@ -122,14 +154,17 @@ class Simulation:
         return (0,0)
 
     def printPlayers(self):
-        for playerEnvironment in self.thePlayerEnvironments:
-            print playerEnvironment.theFood
+        for i in range(len(self.thePlayerEnvironments)):
+            if i == 0:
+                print "User Player: ", self.thePlayerEnvironments[i].theFood
+            else:
+                print self.thePlayerEnvironments[i].theFood
 
 if __name__ == "__main__":
     pg = PlayerGenerator()
     sim = Simulation(10, pg)
 
-    while not sim.gameIsOver():
+    while not sim.isGameOver():
         sim.simulateRound()
         sim.cleanUpAfterRound()
         print "Round " + str(sim.theRoundNumber)
