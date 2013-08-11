@@ -1,6 +1,6 @@
 # Optional format of the constructor for the OOP approach
 class Strategy:
-    def __init__(self, threshold):
+    def __init__(self):
         """
         Optional __init__ method is run once when your Player object is created before the
         game starts
@@ -13,7 +13,6 @@ class Strategy:
         """
         self.food = 0
         self.reputation = 0
-        self.threshold = threshold
 
     # All the other functions are the same as with the non object oriented setting (but they
     # should be instance methods so don't forget to add 'self' as an extra first argument).
@@ -21,11 +20,12 @@ class Strategy:
     # state 'h' or 's'
     def hunt_choices(self, round_number, current_food, current_reputation, m,
             player_reputations):
+        threshold = 0.5
         hunt_decisions = []
         if round_number <= 10:
             return ['h' for x in player_reputations]
         for rep in player_reputations:
-            if rep < self.threshold:
+            if rep < threshold:
                 hunt_decisions.append('s')
             else:
                 hunt_decisions.append('h')
