@@ -36,3 +36,6 @@ class ChaoticThresholdPlayer:
 
     def round_end(self, award, m, number_hunters):
         pass # do nothing
+
+    def printInfo(self):
+        print "ChaoticThresholdPlayer with threshold " + str(self.threshold) + " and chaotic threshold " + str(self.chaoticProbability)

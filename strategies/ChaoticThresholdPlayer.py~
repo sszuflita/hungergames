@@ -1,5 +1,7 @@
+import random
+
 # Optional format of the constructor for the OOP approach
-class ThresholdPlayer:
+class ChaoticThresholdPlayer:
     def __init__(self, aThreshold, aChaoticProbability):
         """
         Optional __init__ method is run once when your Player object is created before the
@@ -23,7 +25,7 @@ class ThresholdPlayer:
             player_reputations):
         hunt_decisions = []
         for rep in player_reputations:
-            if (rep < self.threshold and round_number != 1) or random.rand() < self.chaoticProbability:
+            if (rep < self.threshold and round_number != 1) or random.random() < self.chaoticProbability:
                 hunt_decisions.append('s')
             else:
                 hunt_decisions.append('h')

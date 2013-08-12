@@ -36,3 +36,6 @@ class RandomPlayer:
 
     def round_end(self, award, m, number_hunters):
         pass # do nothing
+
+    def printInfo(self):
+        print "RandomPlayer with probability " + str(self.probability)

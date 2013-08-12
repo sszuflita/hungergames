@@ -1,0 +1,43 @@
+import math, random
+
+class ReverseThreshold:
+    def __init__(self, threshold):
+        self.hunted = 0
+        self.slacked = 0
+        self.threshold = threshold
+
+    def hunt_choices(self, round_number, current_food, current_reputation, m,
+                     player_reputations):
+        if len(player_reputations) == 1:
+            return ['s']
+        hunt_decisions = []
+        print "My reputation is: " + str(current_reputation)
+        if (round_number < 10):
+            hunt_decisions = ['h' for player in player_reputations]
+        n = len(player_reputations)
+        timesToHunt = int(math.ceil(self.threshold * (self.hunted + self.slacked + n) - self.hunted))
+        for i in range(timesToHunt):
+            hunt_decisions.append('h')
+            self.hunted += 1
+        for i in range(n - timesToHunt):
+            hunt_decisions.append('s')
+            self.slacked += 1
+        print hunt_decisions
+        hunt_decisions = this.shuffle(hunt_decisions, timesToHunt)
+        return hunt_decisions
+
+    def hunt_outcomes(self, food_earnings):
+        pass
+
+    def round_end(self, award, m, number_hunters):
+        pass
+
+    def shuffle(self, hunt_decisions, timesToHunt):
+        for i in range(timesToHunt):
+            j = random.randint(i, timesToHunt - 1)
+            tmp = hunt_decisions[j]
+            hunt_decisions[j] = hunt_decisions[i]
+            hunt_decisions[i] = tmp
+        return hunt_decisions
+    
+        

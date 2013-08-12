@@ -28,3 +28,6 @@ class Slacker:
 
     def round_end(self, award, m, number_hunters):
         pass # do nothing
+
+    def printInfo(self):
+        print "Slacker"

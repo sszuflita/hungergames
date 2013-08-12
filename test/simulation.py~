@@ -18,6 +18,8 @@ hunterFile = import_path("../strategies/Hunter.py")
 randomFile = import_path("../strategies/RandomPlayer.py")
 thresholdFile = import_path("../strategies/ThresholdPlayer.py")
 strategyFile = import_path("../strategies/Strategy.py")
+chaoticFile = import_path("../strategies/ChaoticThresholdPlayer.py")
+reverseThresholdFile = import_path("../strategies/ReverseThreshold.py")
 
 class PlayerEnvironment:
     def __init__(self, aPlayer, aFood):
@@ -38,11 +40,9 @@ class PlayerGenerator:
 
     def generatePlayer(self, id):
         if id == 0:
-            return strategyFile.Strategy(.93)
+            return reverseThresholdFile.ReverseThreshold(.44)
         else:
-            #return slackerFile.Slacker()
-            #return hunterFile.Hunter()
-            return thresholdFile.ThresholdPlayer(random.random())
+            return thresholdFile.ThresholdPlayer(.89)
 
 
 class Simulation:
