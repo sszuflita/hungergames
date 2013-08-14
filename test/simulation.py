@@ -40,25 +40,27 @@ class PlayerGenerator:
         pass
 
     def generatePlayer(self, id):
-        n = 0
-        while(1):
-            i = random.randint(0, 6)
-            if (i == 0):
-                n += 1
-                if n > 0:
-                    return slackerFile.Slacker()
-            if (i == 1):
-                return hunterFile.Hunter()
-            if (i == 2):
-                return randomFile.RandomPlayer(.7 + .3 * random.random())
-            if (i == 3):
-                return thresholdFile.ThresholdPlayer(.7 + .3 * random.random())
-            if (i == 4):
-                return chaoticFile.ChaoticThresholdPlayer(.7 + .3 * random.random(), .05)
-            if (i == 5):
-                return reverseThresholdFile.ReverseThreshold(.7 + .3 * random.random())
-            if (i == 6):
-                return helperFile.Helper()
+        i = random.randint(0,6)
+        if (i == 0):
+            return slackerFile.Slacker()
+        if (i == 1):
+            return hunterFile.Hunter()
+        if (i == 2):
+            return randomFile.RandomPlayer(.7 + .3 * random.random())
+        if (i == 3):
+            setting = (random.randint(0,1) == 0)
+            val = random.random()
+            return thresholdFile.ThresholdPlayer(.7 + .3 * val, setting, .2 + .3 * val)
+        if (i == 4):
+            setting = (random.randint(0,1) == 0)
+            val = random.random()
+            return chaoticFile.ChaoticThresholdPlayer(.7 + .3 * val, .05, setting, .2 + .3 * val)
+        if (i == 5):
+            setting = (random.randint(0,1) == 0)
+            val = random.random()
+            return reverseThresholdFile.ReverseThreshold(.7 + .3 * val, setting, .2 + .3 * val)
+        if (i == 6):
+            return helperFile.Helper()
 
 class Simulation:
     def __init__(self, aNumPlayers, aPlayerGenerator):
@@ -119,11 +121,17 @@ class Simulation:
 
     def isGameOver(self):
         if len(self.thePlayerEnvironments) == 1:
-            print "Game is over"
+            print "Game is over: One player remaining."
+            print "Game ended on round:", self.theRoundNumber
             self.thePlayerEnvironments[0].thePlayer.printInfo()
             return True
+        if len(self.thePlayerEnvironments) == 0:
+            print "No victor in the Hunger Games :(."
+            print "Game ended on round:", self.theRoundNumber
+            return True
         if self.theRoundNumber > 10000 and random.randint(0,100) > 90:
-            print "Game is over: Large of number of rounds reached"
+            print "Game is over: Large of number of rounds reached."
+            print "Game ended on round:", self.theRoundNumber
             max = self.thePlayerEnvironments[0].theFood
             maxIdx = 0
             for i in range(1,len(self.thePlayerEnvironments)):
@@ -160,14 +168,17 @@ class Simulation:
 
 if __name__ == "__main__":
     pg = PlayerGenerator()
-    sim = Simulation(500, pg)
+    sizeSim = 30
+    sim = Simulation(sizeSim, pg)
 
     for i in range(100):
         while not sim.isGameOver():
             sim.simulateRound()
             sim.cleanUpAfterRound()
-        print sim.theRoundNumber
-        sim = Simulation(500, pg)
+            #print "Round:",sim.theRoundNumber
+            #sim.printPlayers()
+        #print sim.theRoundNumber
+        sim = Simulation(sizeSim, pg)
     # sim.printPlayers()
 
 

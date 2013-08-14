@@ -1,26 +1,25 @@
 # Optional format of the constructor for the OOP approach
 class ThresholdPlayer:
-    def __init__(self, aThreshold):
-        """
-        Optional __init__ method is run once when your Player object is created before the
-        game starts
-
-        You can add other internal (instance) variables here at your discretion.
-
-        You don't need to define food or reputation as instance variables, since the host
-        will never use them. The host will keep track of your food and reputation for you
-        as well, and return it through hunt_choices.
-        """
+    def __init__(self, aThreshold, decayFlag, endPoint):
         self.food = 0
         self.reputation = 0
         self.threshold = aThreshold
+        self.initialThreshold = aThreshold
+        self.decayFlag = decayFlag
+        self.endPoint = endPoint
+        self.startNumPlayers = 0
+        self.currentNumPlayers = 0
 
-    # All the other functions are the same as with the non object oriented setting (but they
-    # should be instance methods so don't forget to add 'self' as an extra first argument).
+    def refresh_threshold(self):
+        if self.decayFlag and self.endPoint < self.initialThreshold:
+            self.threshold = self.endPoint + float(self.currentNumPlayers)/self.startNumPlayers*(self.initialThreshold-self.endPoint)
 
-    # state 'h' or 's'
     def hunt_choices(self, round_number, current_food, current_reputation, m,
             player_reputations):
+        if round_number == 1:
+            self.startNumPlayers = len(player_reputations)
+        self.currentNumPlayers = len(player_reputations)
+        self.refresh_threshold()
         hunt_decisions = []
         for rep in player_reputations:
             if rep < self.threshold and round_number != 1:
@@ -37,3 +36,7 @@ class ThresholdPlayer:
 
     def printInfo(self):
         print "ThresholdPlayer with threshold " + str(self.threshold)
+        if self.decayFlag:
+            print "Decay setting on, Initial Threshold:", self.initialThreshold, "EndPoint:", self.endPoint
+        else:
+            print "Decay setting off"
