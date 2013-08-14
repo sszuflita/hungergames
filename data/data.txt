@@ -1,0 +1,57 @@
+Game is over: Large of number of rounds reached
+Slacker
+10001
+Game is over: Large of number of rounds reached
+Hunter
+10005
+Game is over: Large of number of rounds reached
+Slacker
+10006
+Game is over: Large of number of rounds reached
+Slacker
+10013
+Game is over: Large of number of rounds reached
+Hunter
+10011
+Game is over: Large of number of rounds reached
+Slacker
+10002
+Game is over: Large of number of rounds reached
+Hunter
+10037
+Game is over
+Slacker
+4782
+Game is over: Large of number of rounds reached
+Slacker
+10003
+Game is over: Large of number of rounds reached
+ReverseThreshold with threshold 0.996020607602
+10006
+Game is over: Large of number of rounds reached
+Slacker
+10002
+Game is over: Large of number of rounds reached
+ReverseThreshold with threshold 0.998343285206
+10001
+Game is over: Large of number of rounds reached
+Slacker
+10020
+Game is over: Large of number of rounds reached
+Slacker
+10010
+Game is over: Large of number of rounds reached
+RandomPlayer with probability 0.998803774448
+10034
+Game is over: Large of number of rounds reached
+Slacker
+10005
+Game is over: Large of number of rounds reached
+Slacker
+10003
+Game is over: Large of number of rounds reached
+Slacker
+10004
+Game is over: Large of number of rounds reached
+Hunter
+10023

@@ -20,6 +20,7 @@ thresholdFile = import_path("../strategies/ThresholdPlayer.py")
 strategyFile = import_path("../strategies/Strategy.py")
 chaoticFile = import_path("../strategies/ChaoticThresholdPlayer.py")
 reverseThresholdFile = import_path("../strategies/ReverseThreshold.py")
+helperFile = import_path("../strategies/Helper.py")
 
 class PlayerEnvironment:
     def __init__(self, aPlayer, aFood):
@@ -39,19 +40,25 @@ class PlayerGenerator:
         pass
 
     def generatePlayer(self, id):
-        i = random.randint(0, 5)
-        if (i == 0):
-            return slackerFile.Slacker()
-        if (i == 1):
-            return hunterFile.Hunter()
-        if (i == 2):
-            return randomFile.RandomPlayer(random.random())
-        if (i == 3):
-            return thresholdFile.ThresholdPlayer(.85)
-        if (i == 4):
-            return chaoticFile.ChaoticThresholdPlayer(.8, .05)
-        if (i == 5):
-            return reverseThresholdFile.ReverseThreshold(.5)
+        n = 0
+        while(1):
+            i = random.randint(0, 6)
+            if (i == 0):
+                n += 1
+                if n > 0:
+                    return slackerFile.Slacker()
+            if (i == 1):
+                return hunterFile.Hunter()
+            if (i == 2):
+                return randomFile.RandomPlayer(.7 + .3 * random.random())
+            if (i == 3):
+                return thresholdFile.ThresholdPlayer(.7 + .3 * random.random())
+            if (i == 4):
+                return chaoticFile.ChaoticThresholdPlayer(.7 + .3 * random.random(), .05)
+            if (i == 5):
+                return reverseThresholdFile.ReverseThreshold(.7 + .3 * random.random())
+            if (i == 6):
+                return helperFile.Helper()
 
 class Simulation:
     def __init__(self, aNumPlayers, aPlayerGenerator):
@@ -153,13 +160,14 @@ class Simulation:
 
 if __name__ == "__main__":
     pg = PlayerGenerator()
-    sim = Simulation(100, pg)
+    sim = Simulation(500, pg)
 
-    while not sim.isGameOver():
-        sim.simulateRound()
-        sim.cleanUpAfterRound()
-        print "Round " + str(sim.theRoundNumber)
-        sim.printPlayers()
-    sim.printPlayers()
+    for i in range(100):
+        while not sim.isGameOver():
+            sim.simulateRound()
+            sim.cleanUpAfterRound()
+        print sim.theRoundNumber
+        sim = Simulation(500, pg)
+    # sim.printPlayers()
 
 

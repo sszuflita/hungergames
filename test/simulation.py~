@@ -39,24 +39,32 @@ class PlayerGenerator:
         pass
 
     def generatePlayer(self, id):
-        if id == 0:
-            return reverseThresholdFile.ReverseThreshold(.44)
-        else:
-            return thresholdFile.ThresholdPlayer(.89)
-
+        n = 0
+        while(1):
+            i = random.randint(0, 5)
+            if (i == 0):
+                n += 1
+                if n > 0:
+                    return slackerFile.Slacker()
+            if (i == 1):
+                return hunterFile.Hunter()
+            if (i == 2):
+                return randomFile.RandomPlayer(.7 + .3 * random.random())
+            if (i == 3):
+                return thresholdFile.ThresholdPlayer(.7 + .3 * random.random())
+            if (i == 4):
+                return chaoticFile.ChaoticThresholdPlayer(.7 + .3 * random.random(), .05)
+            if (i == 5):
+                return reverseThresholdFile.ReverseThreshold(.7 + .3 * random.random())
 
 class Simulation:
     def __init__(self, aNumPlayers, aPlayerGenerator):
-        self.playerDied = False
         self.theRoundNumber = 0
         self.thePlayerEnvironments = []
         amtFood = 300 * (aNumPlayers - 1)
         # always initialize user player to be index 0
-        myPlayer = aPlayerGenerator.generatePlayer(0)
-        myEnvironment = PlayerEnvironment(myPlayer, amtFood)
-        self.thePlayerEnvironments.append(myEnvironment)
-        for i in range(1,aNumPlayers):
-            myPlayer = aPlayerGenerator.generatePlayer(1)
+        for i in range(0, aNumPlayers):
+            myPlayer = aPlayerGenerator.generatePlayer(i)
             myEnvironment = PlayerEnvironment(myPlayer, amtFood)
             self.thePlayerEnvironments.append(myEnvironment)
 
@@ -107,11 +115,9 @@ class Simulation:
             playerEnvironment.theFood += award
 
     def isGameOver(self):
-        if self.playerDied:
-            print "Game is over: User Player died :("
-            return True
         if len(self.thePlayerEnvironments) == 1:
-            print "Game is over: User Player won!!!! :)"
+            print "Game is over"
+            self.thePlayerEnvironments[0].thePlayer.printInfo()
             return True
         if self.theRoundNumber > 10000 and random.randint(0,100) > 90:
             print "Game is over: Large of number of rounds reached"
@@ -121,10 +127,7 @@ class Simulation:
                 if self.thePlayerEnvironments[i].theFood > max:
                     max = self.thePlayerEnvironments[i].theFood
                     maxIdx = i
-            if maxIdx == 0:
-                print "User Player won still!"
-            else:
-                print "User Player lost :(. Player ", maxIdx, " won instead."
+            self.thePlayerEnvironments[maxIdx].thePlayer.printInfo()
             return True
         return False
 
@@ -133,9 +136,6 @@ class Simulation:
         while(i < len(self.thePlayerEnvironments)):
             myPlayerEnvironment = self.thePlayerEnvironments[i]
             if (myPlayerEnvironment.theFood <= 0):
-                # the first time this happens means that our played died
-                if i == 0:
-                    self.playerDied = True
                 del self.thePlayerEnvironments[i]
             else:
                 i += 1
@@ -153,20 +153,18 @@ class Simulation:
 
     def printPlayers(self):
         for i in range(len(self.thePlayerEnvironments)):
-            if i == 0 and not self.playerDied:
-                print "User Player: ", self.thePlayerEnvironments[i].theFood
-            else:
-                print self.thePlayerEnvironments[i].theFood
+            print self.thePlayerEnvironments[i].theFood
 
 if __name__ == "__main__":
     pg = PlayerGenerator()
-    sim = Simulation(10, pg)
+    sim = Simulation(500, pg)
 
-    while not sim.isGameOver():
-        sim.simulateRound()
-        sim.cleanUpAfterRound()
-        print "Round " + str(sim.theRoundNumber)
-        sim.printPlayers()
-    sim.printPlayers()
+    for i in range(100):
+        while not sim.isGameOver():
+            sim.simulateRound()
+            sim.cleanUpAfterRound()
+        print sim.theRoundNumber
+        sim = Simulation(500, pg)
+    # sim.printPlayers()
 
 
