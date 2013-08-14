@@ -168,10 +168,12 @@ class Simulation:
 
 if __name__ == "__main__":
     pg = PlayerGenerator()
-    sizeSim = 30
+    sizeSim = 50
+    numTimes = 100
     sim = Simulation(sizeSim, pg)
 
-    for i in range(100):
+    for i in range(1,numTimes+1):
+        print "Simulation:", i
         while not sim.isGameOver():
             sim.simulateRound()
             sim.cleanUpAfterRound()
