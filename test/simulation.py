@@ -36,34 +36,65 @@ class PlayerEnvironment:
             return float(self.timesHunted) / (self.timesHunted + self.timesSlacked)
 
 class PlayerGenerator:
+
+
     def __init__(self):
-        pass
+        self.counts = {}
+        self.counts["slacker"] = 0
+        self.counts["hunter"] = 0
+        self.counts["random"] = 0
+        self.counts["threshold"] = 0
+        self.counts["chaotic"] = 0
+        self.counts["reverse"] = 0
+        self.counts["helper"] = 0                                                
 
     def generatePlayer(self, id):
         i = random.randint(0,6)
         if (i == 0):
+            self.counts["slacker"] += 1
             return slackerFile.Slacker()
         if (i == 1):
+            self.counts["hunter"] += 1
             return hunterFile.Hunter()
         if (i == 2):
+            self.counts["random"] += 1
             return randomFile.RandomPlayer(.7 + .3 * random.random())
         if (i == 3):
+            self.counts["threshold"] += 1
             setting = (random.randint(0,1) == 0)
             val = random.random()
             return thresholdFile.ThresholdPlayer(.7 + .3 * val, setting, .2 + .3 * val)
         if (i == 4):
+            self.counts["chaotic"] += 1
             setting = (random.randint(0,1) == 0)
             val = random.random()
             return chaoticFile.ChaoticThresholdPlayer(.7 + .3 * val, .05, setting, .2 + .3 * val)
         if (i == 5):
+            self.counts["reverse"] += 1
             setting = (random.randint(0,1) == 0)
             val = random.random()
-            return reverseThresholdFile.ReverseThreshold(.7 + .3 * val, setting, .2 + .3 * val)
+            return reverseThresholdFile.ReverseThreshold()
         if (i == 6):
+            self.counts["helper"] += 1
             return helperFile.Helper()
+
+    def report(self):
+        for key in self.counts:
+            print key + "\t" + str(self.counts[key])
+
+    def reset(self):
+        self.counts = {}
+        self.counts["slacker"] = 0
+        self.counts["hunter"] = 0
+        self.counts["random"] = 0
+        self.counts["threshold"] = 0
+        self.counts["chaotic"] = 0
+        self.counts["reverse"] = 0
+        self.counts["helper"] = 0    
 
 class Simulation:
     def __init__(self, aNumPlayers, aPlayerGenerator):
+        aPlayerGenerator.reset()
         self.theRoundNumber = 0
         self.thePlayerEnvironments = []
         amtFood = 300 * (aNumPlayers - 1)
@@ -72,6 +103,7 @@ class Simulation:
             myPlayer = aPlayerGenerator.generatePlayer(i)
             myEnvironment = PlayerEnvironment(myPlayer, amtFood)
             self.thePlayerEnvironments.append(myEnvironment)
+        aPlayerGenerator.report()
 
     def simulateRound(self):
         self.theRoundNumber += 1
@@ -123,13 +155,12 @@ class Simulation:
         if len(self.thePlayerEnvironments) == 1:
             print "Game is over: One player remaining."
             print "Game ended on round:", self.theRoundNumber
-            self.thePlayerEnvironments[0].thePlayer.printInfo()
             return True
         if len(self.thePlayerEnvironments) == 0:
             print "No victor in the Hunger Games :(."
             print "Game ended on round:", self.theRoundNumber
             return True
-        if self.theRoundNumber > 10000 and random.randint(0,100) > 90:
+        if self.theRoundNumber > 100 and random.randint(0,100) > 90:
             print "Game is over: Large of number of rounds reached."
             print "Game ended on round:", self.theRoundNumber
             max = self.thePlayerEnvironments[0].theFood
@@ -138,7 +169,6 @@ class Simulation:
                 if self.thePlayerEnvironments[i].theFood > max:
                     max = self.thePlayerEnvironments[i].theFood
                     maxIdx = i
-            self.thePlayerEnvironments[maxIdx].thePlayer.printInfo()
             return True
         return False
 
@@ -162,14 +192,10 @@ class Simulation:
             return (-2,-2)
         return (0,0)
 
-    def printPlayers(self):
-        for i in range(len(self.thePlayerEnvironments)):
-            print self.thePlayerEnvironments[i].theFood
-
 if __name__ == "__main__":
     pg = PlayerGenerator()
-    sizeSim = 50
-    numTimes = 100
+    sizeSim = 10
+    numTimes = 10
     sim = Simulation(sizeSim, pg)
 
     for i in range(1,numTimes+1):
@@ -177,10 +203,6 @@ if __name__ == "__main__":
         while not sim.isGameOver():
             sim.simulateRound()
             sim.cleanUpAfterRound()
-            #print "Round:",sim.theRoundNumber
-            #sim.printPlayers()
-        #print sim.theRoundNumber
         sim = Simulation(sizeSim, pg)
-    # sim.printPlayers()
 
 

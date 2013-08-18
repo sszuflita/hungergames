@@ -1,0 +1,445 @@
+Simulation: 1
+Game is over: Large of number of rounds reached.
+Game ended on round: 1002
+ReverseThreshold with threshold 1.0
+Decay setting on, Initial Threshold: 1 EndPoint: 0
+Simulation: 2
+Game is over: Large of number of rounds reached.
+Game ended on round: 1027
+ReverseThreshold with threshold 1.0
+Decay setting on, Initial Threshold: 1 EndPoint: 0
+Simulation: 3
+Game is over: Large of number of rounds reached.
+Game ended on round: 1001
+RandomPlayer with probability 0.993773370183
+Simulation: 4
+Game is over: Large of number of rounds reached.
+Game ended on round: 1008
+Hunter
+Simulation: 5
+Game is over: Large of number of rounds reached.
+Game ended on round: 1001
+ReverseThreshold with threshold 1.0
+Decay setting on, Initial Threshold: 1 EndPoint: 0
+Simulation: 6
+Game is over: Large of number of rounds reached.
+Game ended on round: 1013
+Hunter
+Simulation: 7
+Game is over: Large of number of rounds reached.
+Game ended on round: 1001
+ReverseThreshold with threshold 1.0
+Decay setting on, Initial Threshold: 1 EndPoint: 0
+Simulation: 8
+Game is over: Large of number of rounds reached.
+Game ended on round: 1005
+Hunter
+Simulation: 9
+Game is over: Large of number of rounds reached.
+Game ended on round: 1018
+RandomPlayer with probability 0.992567316829
+Simulation: 10
+Game is over: Large of number of rounds reached.
+Game ended on round: 1001
+RandomPlayer with probability 0.989351344564
+Simulation: 11
+Game is over: Large of number of rounds reached.
+Game ended on round: 1005
+Hunter
+Simulation: 12
+Game is over: Large of number of rounds reached.
+Game ended on round: 1001
+ChaoticThresholdPlayer with threshold 0.973951918772 and chaotic threshold 0.05
+Decay setting on, Initial Threshold: 0.973951918772 EndPoint: 0.473951918772
+Simulation: 13
+Game is over: Large of number of rounds reached.
+Game ended on round: 1002
+RandomPlayer with probability 0.99793965388
+Simulation: 14
+Game is over: Large of number of rounds reached.
+Game ended on round: 1014
+Hunter
+Simulation: 15
+Game is over: Large of number of rounds reached.
+Game ended on round: 1017
+Hunter
+Simulation: 16
+Game is over: Large of number of rounds reached.
+Game ended on round: 1013
+ChaoticThresholdPlayer with threshold 0.989370060238 and chaotic threshold 0.05
+Decay setting on, Initial Threshold: 0.989370060238 EndPoint: 0.489370060238
+Simulation: 17
+Game is over: Large of number of rounds reached.
+Game ended on round: 1003
+ReverseThreshold with threshold 1.0
+Decay setting on, Initial Threshold: 1 EndPoint: 0
+Simulation: 18
+Game is over: Large of number of rounds reached.
+Game ended on round: 1003
+RandomPlayer with probability 0.991778744397
+Simulation: 19
+Game is over: Large of number of rounds reached.
+Game ended on round: 1038
+Hunter
+Simulation: 20
+Game is over: Large of number of rounds reached.
+Game ended on round: 1010
+ReverseThreshold with threshold 1.0
+Decay setting on, Initial Threshold: 1 EndPoint: 0
+Simulation: 21
+Game is over: Large of number of rounds reached.
+Game ended on round: 1027
+ChaoticThresholdPlayer with threshold 0.994311738984 and chaotic threshold 0.05
+Decay setting off
+Simulation: 22
+Game is over: Large of number of rounds reached.
+Game ended on round: 1010
+RandomPlayer with probability 0.994004022746
+Simulation: 23
+Game is over: Large of number of rounds reached.
+Game ended on round: 1002
+Hunter
+Simulation: 24
+Game is over: Large of number of rounds reached.
+Game ended on round: 1006
+RandomPlayer with probability 0.961628303904
+Simulation: 25
+Game is over: Large of number of rounds reached.
+Game ended on round: 1002
+Hunter
+Simulation: 26
+Game is over: Large of number of rounds reached.
+Game ended on round: 1010
+ReverseThreshold with threshold 1.0
+Decay setting on, Initial Threshold: 1 EndPoint: 0
+Simulation: 27
+Game is over: Large of number of rounds reached.
+Game ended on round: 1008
+ReverseThreshold with threshold 1.0
+Decay setting on, Initial Threshold: 1 EndPoint: 0
+Simulation: 28
+Game is over: Large of number of rounds reached.
+Game ended on round: 1009
+ReverseThreshold with threshold 1.0
+Decay setting on, Initial Threshold: 1 EndPoint: 0
+Simulation: 29
+Game is over: Large of number of rounds reached.
+Game ended on round: 1001
+RandomPlayer with probability 0.988111570413
+Simulation: 30
+Game is over: Large of number of rounds reached.
+Game ended on round: 1003
+RandomPlayer with probability 0.996134974066
+Simulation: 31
+Game is over: Large of number of rounds reached.
+Game ended on round: 1031
+ReverseThreshold with threshold 1.0
+Decay setting on, Initial Threshold: 1 EndPoint: 0
+Simulation: 32
+Game is over: Large of number of rounds reached.
+Game ended on round: 1006
+Hunter
+Simulation: 33
+Game is over: Large of number of rounds reached.
+Game ended on round: 1005
+RandomPlayer with probability 0.975847782425
+Simulation: 34
+Game is over: Large of number of rounds reached.
+Game ended on round: 1004
+ChaoticThresholdPlayer with threshold 0.983391282 and chaotic threshold 0.05
+Decay setting off
+Simulation: 35
+Game is over: Large of number of rounds reached.
+Game ended on round: 1023
+Hunter
+Simulation: 36
+Game is over: Large of number of rounds reached.
+Game ended on round: 1003
+ChaoticThresholdPlayer with threshold 0.981999562655 and chaotic threshold 0.05
+Decay setting off
+Simulation: 37
+Game is over: Large of number of rounds reached.
+Game ended on round: 1002
+RandomPlayer with probability 0.989857386509
+Simulation: 38
+Game is over: Large of number of rounds reached.
+Game ended on round: 1003
+ReverseThreshold with threshold 1.0
+Decay setting on, Initial Threshold: 1 EndPoint: 0
+Simulation: 39
+Game is over: Large of number of rounds reached.
+Game ended on round: 1005
+Hunter
+Simulation: 40
+Game is over: Large of number of rounds reached.
+Game ended on round: 1007
+Hunter
+Simulation: 41
+Game is over: Large of number of rounds reached.
+Game ended on round: 1008
+ChaoticThresholdPlayer with threshold 0.999431216628 and chaotic threshold 0.05
+Decay setting on, Initial Threshold: 0.999431216628 EndPoint: 0.499431216628
+Simulation: 42
+Game is over: Large of number of rounds reached.
+Game ended on round: 1015
+Hunter
+Simulation: 43
+Game is over: Large of number of rounds reached.
+Game ended on round: 1001
+Hunter
+Simulation: 44
+Game is over: Large of number of rounds reached.
+Game ended on round: 1018
+ReverseThreshold with threshold 1.0
+Decay setting on, Initial Threshold: 1 EndPoint: 0
+Simulation: 45
+Game is over: Large of number of rounds reached.
+Game ended on round: 1003
+RandomPlayer with probability 0.981782445738
+Simulation: 46
+Game is over: Large of number of rounds reached.
+Game ended on round: 1018
+RandomPlayer with probability 0.992883985085
+Simulation: 47
+Game is over: Large of number of rounds reached.
+Game ended on round: 1004
+ChaoticThresholdPlayer with threshold 0.997234264315 and chaotic threshold 0.05
+Decay setting off
+Simulation: 48
+Game is over: Large of number of rounds reached.
+Game ended on round: 1010
+ReverseThreshold with threshold 1.0
+Decay setting on, Initial Threshold: 1 EndPoint: 0
+Simulation: 49
+Game is over: Large of number of rounds reached.
+Game ended on round: 1012
+Hunter
+Simulation: 50
+Game is over: Large of number of rounds reached.
+Game ended on round: 1025
+ReverseThreshold with threshold 1.0
+Decay setting on, Initial Threshold: 1 EndPoint: 0
+Simulation: 51
+Game is over: Large of number of rounds reached.
+Game ended on round: 1008
+RandomPlayer with probability 0.992528872953
+Simulation: 52
+Game is over: Large of number of rounds reached.
+Game ended on round: 1010
+RandomPlayer with probability 0.990348388223
+Simulation: 53
+Game is over: Large of number of rounds reached.
+Game ended on round: 1007
+Hunter
+Simulation: 54
+Game is over: Large of number of rounds reached.
+Game ended on round: 1009
+RandomPlayer with probability 0.963160072878
+Simulation: 55
+Game is over: Large of number of rounds reached.
+Game ended on round: 1019
+RandomPlayer with probability 0.997443691542
+Simulation: 56
+Game is over: Large of number of rounds reached.
+Game ended on round: 1022
+ReverseThreshold with threshold 1.0
+Decay setting on, Initial Threshold: 1 EndPoint: 0
+Simulation: 57
+Game is over: Large of number of rounds reached.
+Game ended on round: 1014
+ReverseThreshold with threshold 1.0
+Decay setting on, Initial Threshold: 1 EndPoint: 0
+Simulation: 58
+Game is over: Large of number of rounds reached.
+Game ended on round: 1007
+ReverseThreshold with threshold 1.0
+Decay setting on, Initial Threshold: 1 EndPoint: 0
+Simulation: 59
+Game is over: Large of number of rounds reached.
+Game ended on round: 1005
+ReverseThreshold with threshold 1.0
+Decay setting on, Initial Threshold: 1 EndPoint: 0
+Simulation: 60
+Game is over: Large of number of rounds reached.
+Game ended on round: 1008
+RandomPlayer with probability 0.970476339853
+Simulation: 61
+Game is over: Large of number of rounds reached.
+Game ended on round: 1004
+ChaoticThresholdPlayer with threshold 0.986394098554 and chaotic threshold 0.05
+Decay setting off
+Simulation: 62
+Game is over: Large of number of rounds reached.
+Game ended on round: 1021
+ReverseThreshold with threshold 1.0
+Decay setting on, Initial Threshold: 1 EndPoint: 0
+Simulation: 63
+Game is over: Large of number of rounds reached.
+Game ended on round: 1011
+Hunter
+Simulation: 64
+Game is over: Large of number of rounds reached.
+Game ended on round: 1002
+RandomPlayer with probability 0.993839113351
+Simulation: 65
+Game is over: Large of number of rounds reached.
+Game ended on round: 1011
+RandomPlayer with probability 0.991701973053
+Simulation: 66
+Game is over: Large of number of rounds reached.
+Game ended on round: 1008
+Hunter
+Simulation: 67
+Game is over: Large of number of rounds reached.
+Game ended on round: 1001
+ReverseThreshold with threshold 1.0
+Decay setting on, Initial Threshold: 1 EndPoint: 0
+Simulation: 68
+Game is over: Large of number of rounds reached.
+Game ended on round: 1007
+ChaoticThresholdPlayer with threshold 0.977735707979 and chaotic threshold 0.05
+Decay setting off
+Simulation: 69
+Game is over: Large of number of rounds reached.
+Game ended on round: 1003
+ChaoticThresholdPlayer with threshold 0.996967068971 and chaotic threshold 0.05
+Decay setting on, Initial Threshold: 0.996967068971 EndPoint: 0.496967068971
+Simulation: 70
+Game is over: Large of number of rounds reached.
+Game ended on round: 1032
+ReverseThreshold with threshold 1.0
+Decay setting on, Initial Threshold: 1 EndPoint: 0
+Simulation: 71
+Game is over: Large of number of rounds reached.
+Game ended on round: 1001
+ChaoticThresholdPlayer with threshold 0.989378172989 and chaotic threshold 0.05
+Decay setting on, Initial Threshold: 0.989378172989 EndPoint: 0.489378172989
+Simulation: 72
+Game is over: Large of number of rounds reached.
+Game ended on round: 1001
+Hunter
+Simulation: 73
+Game is over: Large of number of rounds reached.
+Game ended on round: 1003
+ReverseThreshold with threshold 1.0
+Decay setting on, Initial Threshold: 1 EndPoint: 0
+Simulation: 74
+Game is over: Large of number of rounds reached.
+Game ended on round: 1012
+RandomPlayer with probability 0.977523624087
+Simulation: 75
+Game is over: Large of number of rounds reached.
+Game ended on round: 1003
+ChaoticThresholdPlayer with threshold 0.989128230079 and chaotic threshold 0.05
+Decay setting off
+Simulation: 76
+Game is over: Large of number of rounds reached.
+Game ended on round: 1013
+Hunter
+Simulation: 77
+Game is over: Large of number of rounds reached.
+Game ended on round: 1005
+ReverseThreshold with threshold 1.0
+Decay setting on, Initial Threshold: 1 EndPoint: 0
+Simulation: 78
+Game is over: Large of number of rounds reached.
+Game ended on round: 1023
+Hunter
+Simulation: 79
+Game is over: Large of number of rounds reached.
+Game ended on round: 1021
+RandomPlayer with probability 0.99756423911
+Simulation: 80
+Game is over: Large of number of rounds reached.
+Game ended on round: 1001
+RandomPlayer with probability 0.996441644218
+Simulation: 81
+Game is over: Large of number of rounds reached.
+Game ended on round: 1016
+Hunter
+Simulation: 82
+Game is over: Large of number of rounds reached.
+Game ended on round: 1001
+ReverseThreshold with threshold 1.0
+Decay setting on, Initial Threshold: 1 EndPoint: 0
+Simulation: 83
+Game is over: Large of number of rounds reached.
+Game ended on round: 1022
+ReverseThreshold with threshold 1.0
+Decay setting on, Initial Threshold: 1 EndPoint: 0
+Simulation: 84
+Game is over: Large of number of rounds reached.
+Game ended on round: 1002
+ChaoticThresholdPlayer with threshold 0.984719336475 and chaotic threshold 0.05
+Decay setting on, Initial Threshold: 0.984719336475 EndPoint: 0.484719336475
+Simulation: 85
+Game is over: Large of number of rounds reached.
+Game ended on round: 1016
+Hunter
+Simulation: 86
+Game is over: Large of number of rounds reached.
+Game ended on round: 1018
+ReverseThreshold with threshold 1.0
+Decay setting on, Initial Threshold: 1 EndPoint: 0
+Simulation: 87
+Game is over: Large of number of rounds reached.
+Game ended on round: 1005
+RandomPlayer with probability 0.990214468887
+Simulation: 88
+Game is over: Large of number of rounds reached.
+Game ended on round: 1015
+ReverseThreshold with threshold 1.0
+Decay setting on, Initial Threshold: 1 EndPoint: 0
+Simulation: 89
+Game is over: Large of number of rounds reached.
+Game ended on round: 1021
+ReverseThreshold with threshold 1.0
+Decay setting on, Initial Threshold: 1 EndPoint: 0
+Simulation: 90
+Game is over: Large of number of rounds reached.
+Game ended on round: 1001
+ReverseThreshold with threshold 1.0
+Decay setting on, Initial Threshold: 1 EndPoint: 0
+Simulation: 91
+Game is over: Large of number of rounds reached.
+Game ended on round: 1008
+ReverseThreshold with threshold 1.0
+Decay setting on, Initial Threshold: 1 EndPoint: 0
+Simulation: 92
+Game is over: Large of number of rounds reached.
+Game ended on round: 1001
+RandomPlayer with probability 0.983706680874
+Simulation: 93
+Game is over: Large of number of rounds reached.
+Game ended on round: 1001
+RandomPlayer with probability 0.997609359021
+Simulation: 94
+Game is over: Large of number of rounds reached.
+Game ended on round: 1003
+ReverseThreshold with threshold 1.0
+Decay setting on, Initial Threshold: 1 EndPoint: 0
+Simulation: 95
+Game is over: Large of number of rounds reached.
+Game ended on round: 1001
+Hunter
+Simulation: 96
+Game is over: Large of number of rounds reached.
+Game ended on round: 1004
+RandomPlayer with probability 0.996829039449
+Simulation: 97
+Game is over: Large of number of rounds reached.
+Game ended on round: 1016
+RandomPlayer with probability 0.975797044532
+Simulation: 98
+Game is over: Large of number of rounds reached.
+Game ended on round: 1016
+RandomPlayer with probability 0.96249532632
+Simulation: 99
+Game is over: Large of number of rounds reached.
+Game ended on round: 1011
+ReverseThreshold with threshold 1.0
+Decay setting on, Initial Threshold: 1 EndPoint: 0
+Simulation: 100
+Game is over: Large of number of rounds reached.
+Game ended on round: 1001
+Hunter
