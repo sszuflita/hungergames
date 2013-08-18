@@ -1,20 +1,20 @@
 import math, random
-
-class ReverseThreshold:
-    def __init__(self, threshold, decayFlag, endPoint):
+ 
+class Player:
+    def __init__(self):
         self.hunted = 0
         self.slacked = 0
-        self.threshold = threshold
-        self.initialThreshold = threshold
-        self.decayFlag = decayFlag
-        self.endPoint = endPoint
+        self.threshold = 1.0
+        self.initialThreshold = 1.0
+        self.decayFlag = True
+        self.endPoint = 0.0
         self.startNumPlayers = 0
         self.currentNumPlayers = 0
-        
+         
     def refresh_threshold(self):
         if self.decayFlag and self.endPoint < self.initialThreshold:
             self.threshold = self.endPoint + float(self.currentNumPlayers)/self.startNumPlayers*(self.initialThreshold-self.endPoint)
-
+ 
     def hunt_choices(self, round_number, current_food, current_reputation, m,
                      player_reputations):
         if round_number == 1:
@@ -36,13 +36,13 @@ class ReverseThreshold:
             self.slacked += 1
         hunt_decisions = self.shuffle(hunt_decisions)
         return hunt_decisions
-
+ 
     def hunt_outcomes(self, food_earnings):
         pass
-
+ 
     def round_end(self, award, m, number_hunters):
         pass
-
+ 
     def shuffle(self, hunt_decisions):
         n = len(hunt_decisions)
         for i in range(n):
@@ -51,11 +51,3 @@ class ReverseThreshold:
             hunt_decisions[j] = hunt_decisions[i]
             hunt_decisions[i] = tmp
         return hunt_decisions
-
-    def printInfo(self):
-        print "ReverseThresholdPlayer with threshold " + str(self.threshold)
-        if self.decayFlag:
-            print "Decay setting on, Initial Threshold:", self.initialThreshold, "EndPoint:", self.endPoint
-        else:
-            print "Decay setting off"
-        

@@ -35,7 +35,7 @@ class ThresholdPlayer:
         pass # do nothing
 
     def printInfo(self):
-        print "ThresholdPlayer with threshold " + str(self.threshold)
+        print "NormalThresholdPlayer with threshold " + str(self.threshold)
         if self.decayFlag:
             print "Decay setting on, Initial Threshold:", self.initialThreshold, "EndPoint:", self.endPoint
         else:
